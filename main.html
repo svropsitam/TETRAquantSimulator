@@ -1,0 +1,408 @@
+
+<!--
+# ЛІЦЕНЗІЙНИЙ ДОГОВІР/LICENSE AGREEMENT (Ukrainian/English(bellow))
+# ЛІЦЕНЗІЙНИЙ ДОГОВІР
+Цей ліцензійний договір (далі — "Договір") є юридично обов’язковою угодою між Вами (далі — "Користувач") та Богданом-Любомиром Тетяничем-Бубликом (далі — "Ліцензіар") щодо використання програмного забезпечення (TETRAquantSimulator) (далі — "Програмне забезпечення").
+
+---
+## 1. Предмет договору
+1.1. Ліцензіар надає Користувачу невиключну, обмежену ліцензію на використання Програмного забезпечення відповідно до умов цього Договору.    
+1.2. Програмне забезпечення залишається виключною власністю Ліцензіара.
+
+---
+## 2. Права Користувача
+2.1. Користувач має право:
+
+- Використовувати Програмне забезпечення для особистих або професійних цілей.
+- Аналізувати вихідний код Програмного забезпечення (якщо він наданий).
+
+---
+## 3. Обмеження
+3.1. Користувач не має права:
+
+- Передавати, розповсюджувати, продавати, здавати в оренду, або надавати доступ до Програмного забезпечення без письмової згоди Ліцензіара.
+- Використовувати Програмне забезпечення для створення похідних продуктів без згоди Ліцензіара.
+
+---
+## 4. Відповідальність
+4.1. Ліцензіар не несе відповідальності за будь-які прямі або непрямі збитки, завдані внаслідок використання Програмного забезпечення.  
+4.2. Програмне забезпечення надається "як є", без жодних гарантій щодо його працездатності або відповідності конкретним цілям.
+
+---
+## 5. Захист інтелектуальної власності
+5.1. Усі права на Програмне забезпечення, включаючи, але не обмежуючись, авторськими правами та комерційними таємницями, залишаються за Ліцензіаром.
+
+---
+## 6. Припинення дії Договору
+6.1. Цей Договір діє до моменту його припинення.  
+6.2. Ліцензіар може припинити дію Договору в разі порушення Користувачем будь-яких умов цього Договору.
+
+---
+## 7. Інші положення
+7.1. Цей Договір регулюється чинним законодавством України.  
+7.2. Усі спори, що виникають у зв’язку з цим Договором, вирішуються шляхом переговорів, а в разі неможливості досягнення згоди — у відповідному суді.
+
+Підписуючи або встановлюючи/використовуючи Програмне забезпечення, Ви підтверджуєте, що ознайомилися з умовами цього Договору та погоджуєтеся з ними.
+
+**Богдан-Любомир Тетянич-Бублик**  
+Дата: 2024.11.16
+
+---
+---
+---
+## LICENSE AGREEMENT
+This License Agreement (hereinafter referred to as the "Agreement") is a legally binding agreement between you (hereinafter referred to as the "User") and Tetianych-Bublyk Bohdan-Liubomyr (hereinafter referred to as the "Licensor") regarding the use of the software(TETRAquantSimulator) (hereinafter referred to as the "Software").
+
+---
+## 1. Subject of the Agreement
+1.1. The Licensor grants the User a non-exclusive, limited license to use the Software under the terms of this Agreement.  
+1.2. The Software remains the exclusive property of the Licensor.
+
+---
+## 2. User Rights
+2.1. The User is entitled to:
+
+- Use the Software for personal or professional purposes.
+- Analyze the source code of the Software (if provided).
+
+---
+## 3. Restrictions
+3.1. The User is prohibited from:
+
+- Transferring, distributing, selling, renting, or granting access to the Software without the prior written consent of the Licensor.
+- Using the Software to create derivative works without the Licensor's consent.
+
+---
+## 4. Liability
+4.1. The Licensor shall not be held liable for any direct or indirect damages resulting from the use of the Software.  
+4.2. The Software is provided "as is," without any guarantees of functionality or suitability for specific purposes.
+
+---
+## 5. Intellectual Property Protection
+5.1. All rights to the Software, including but not limited to copyrights and trade secrets, remain with the Licensor.
+
+---
+## 6. Termination of the Agreement
+6.1. This Agreement shall remain in effect until terminated.  
+6.2. The Licensor may terminate this Agreement if the User violates any terms of this Agreement.
+
+---
+## 7. Miscellaneous Provisions
+7.1. This Agreement shall be governed by the laws of Ukraine.  
+7.2. Any disputes arising from this Agreement shall be resolved through negotiations. If no resolution is reached, disputes shall be settled in the appropriate court.
+
+By signing or installing/using the Software, you confirm that you have read and agree to the terms of this Agreement.
+
+**Tetianych-Bublyk Bohdan-Liubomyr**    
+Date: 2024.11.16 -->
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canvas Drawing with Wave Simulation</title>
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #canvas {
+    border: 1px solid black;
+    cursor: crosshair;
+    touch-action: none;
+  }
+  .buttons, .controls {
+    margin-top: 10px;
+  }
+  .buttons button, .controls input {
+    margin-right: 10px;
+    padding: 10px;
+  }
+</style>
+</head>
+<body>
+
+<canvas id="canvas" width="600" height="400"></canvas>
+
+<div class="buttons">
+  <button id="redButton" style="background-color: red;">Червона</button>
+  <button id="greenButton" style="background-color: green;">Зелена</button>
+  <button id="blueButton" style="background-color: blue;">Синя</button>
+  <button id="orangeButton" style="background-color: orange;">Помаранчева</button>
+  <button id="goButton">Запуск хвилі</button>
+  <button id="undoButton">Відмінити</button>
+  <button id="clearButton">Очистити</button>
+</div>
+
+<div class="controls">
+  <label>Кількість частинок:</label>
+  <input type="number" id="particleCount" min="1" max="360" value="360">
+  <label>Швидкість:</label>
+  <input type="text" id="particleSpeed" value="2">
+</div>
+
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+let drawingColor = 'red';
+let isDrawing = false;
+let points = [];
+let lines = [];
+let waveParticles = [];
+let particleCount = 360;
+let particleSpeed = 2;
+let orangeFragments = [];
+
+// Змінити колір малювання
+function setColor(color) {
+  drawingColor = color;
+}
+
+// Події для початку і завершення малювання
+canvas.addEventListener('mousedown', startDrawing);
+canvas.addEventListener('mousemove', draw);
+canvas.addEventListener('mouseup', stopDrawing);
+canvas.addEventListener('mouseleave', stopDrawing);
+canvas.addEventListener('touchstart', startDrawing);
+canvas.addEventListener('touchmove', draw);
+canvas.addEventListener('touchend', stopDrawing);
+
+// Кнопки для зміни кольору
+document.getElementById('redButton').addEventListener('click', () => setColor('red'));
+document.getElementById('greenButton').addEventListener('click', () => setColor('green'));
+document.getElementById('blueButton').addEventListener('click', () => setColor('blue'));
+document.getElementById('orangeButton').addEventListener('click', () => setColor('orange'));
+document.getElementById('goButton').addEventListener('click', startWave);
+document.getElementById('undoButton').addEventListener('click', undoLastLine);
+document.getElementById('clearButton').addEventListener('click', clearCanvas);
+
+// Оновлення налаштувань кількості частинок та швидкості
+document.getElementById('particleCount').addEventListener('input', e => particleCount = parseInt(e.target.value));
+document.getElementById('particleSpeed').addEventListener('input', e => {
+  const speed = parseFloat(e.target.value);
+  if (!isNaN(speed)) {
+    particleSpeed = speed;
+  }
+});
+
+// Початок малювання
+function startDrawing(e) {
+  isDrawing = true;
+  const { offsetX, offsetY } = getCoordinates(e);
+  points = [{ x: offsetX, y: offsetY, color: drawingColor }];
+}
+
+// Малювання
+function draw(e) {
+  if (!isDrawing) return;
+  const { offsetX, offsetY } = getCoordinates(e);
+  points.push({ x: offsetX, y: offsetY, color: drawingColor });
+  redrawCanvas();
+}
+
+// Завершення малювання
+function stopDrawing() {
+  if (isDrawing) {
+    isDrawing = false;
+    if (points.length > 0) {
+      if (drawingColor === 'orange') {
+        points.forEach(point => orangeFragments.push({
+          x: point.x,
+          y: point.y,
+          vx: 0,
+          vy: 0
+        }));
+      } else {
+        lines.push([...points]);
+      }
+      points = [];
+      redrawCanvas();
+    }
+  }
+}
+
+// Функція для відміни останньої лінії
+function undoLastLine() {
+  if (lines.length > 0) {
+    lines.pop();
+    redrawCanvas();
+  }
+}
+
+// Очищення полотна
+function clearCanvas() {
+  lines = [];
+  waveParticles = [];
+  orangeFragments = [];
+  redrawCanvas();
+}
+
+// Перемалювання
+function redrawCanvas() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  lines.forEach(line => drawLine(line));
+  if (points.length > 0) drawLine(points);
+  drawOrangeParticles();
+}
+
+// Малювання лінії
+function drawLine(line) {
+  if (line.length < 2) return;
+  ctx.beginPath();
+  ctx.lineWidth = 2;
+  ctx.strokeStyle = line[0].color;
+  ctx.moveTo(line[0].x, line[0].y);
+  for (let i = 1; i < line.length; i++) {
+    ctx.lineTo(line[i].x, line[i].y);
+  }
+  ctx.stroke();
+}
+
+// Запуск хвилі
+function startWave() {
+  waveParticles = [];
+  lines.forEach(line => {
+    if (line[0].color === 'red') {
+      line.forEach(point => {
+        for (let i = 0; i < particleCount; i++) {
+          const angle = (i * 360 / particleCount) * (Math.PI / 180);
+          waveParticles.push({
+            x: point.x,
+            y: point.y,
+            angle: angle,
+            opacity: 1
+          });
+        }
+      });
+    }
+  });
+  requestAnimationFrame(updateWave);
+}
+
+// Оновлення радіохвилі
+function updateWave() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  redrawCanvas();
+  ctx.globalAlpha = 1;
+
+  waveParticles.forEach((particle, index) => {
+    if (particle.opacity <= 0) {
+      waveParticles.splice(index, 1);
+      return;
+    }
+
+    ctx.globalAlpha = particle.opacity;
+    ctx.fillStyle = 'red';
+    ctx.beginPath();
+    ctx.arc(particle.x, particle.y, 2, 0, Math.PI * 2);
+    ctx.fill();
+
+    let newX = particle.x + Math.cos(particle.angle) * particleSpeed;
+    let newY = particle.y + Math.sin(particle.angle) * particleSpeed;
+
+    if (newX <= 0 || newX >= canvas.width) {
+      particle.angle = Math.PI - particle.angle;
+      particle.opacity -= 0.1;
+    }
+    if (newY <= 0 || newY >= canvas.height) {
+      particle.angle = -particle.angle;
+      particle.opacity -= 0.1;
+    }
+
+    // Взаємодія з помаранчевими частинками
+    orangeFragments.forEach(fragment => {
+      const dx = fragment.x - particle.x;
+      const dy = fragment.y - particle.y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+      if (distance < 5) {
+        const impulse = particle.opacity * 0.2;
+        fragment.vx += Math.cos(particle.angle) * impulse;
+        fragment.vy += Math.sin(particle.angle) * impulse;
+        particle.opacity -= 0.1;
+      }
+    });
+
+    // Відбиття від синіх ліній
+    lines.forEach(line => {
+      if (line[0].color === 'blue' && isPointNearLine(newX, newY, line)) {
+        particle.angle = Math.atan2(particle.y - newY, particle.x - newX);
+        particle.opacity -= 0.1;
+      }
+    });
+
+    particle.x = newX;
+    particle.y = newY;
+  });
+
+  ctx.globalAlpha = 1;
+  updateOrangeFragments();
+  if (waveParticles.length > 0) {
+    requestAnimationFrame(updateWave);
+  }
+}
+
+// Оновлення руху помаранчевих частинок
+function updateOrangeFragments() {
+  orangeFragments.forEach(fragment => {
+    fragment.x += fragment.vx;
+    fragment.y += fragment.vy;
+    fragment.vx *= 0.95;
+    fragment.vy *= 0.95;
+    
+    lines.forEach(line => {
+      if (line[0].color === 'blue' && isPointNearLine(fragment.x, fragment.y, line)) {
+        const angle = Math.atan2(fragment.vy, fragment.vx);
+        fragment.vx = -fragment.vx * 0.7;
+        fragment.vy = -fragment.vy * 0.7;
+      }
+    });
+
+    if (fragment.x <= 0 || fragment.x >= canvas.width) fragment.vx *= -1;
+    if (fragment.y <= 0 || fragment.y >= canvas.height) fragment.vy *= -1;
+  });
+}
+
+// Малювання помаранчевих частинок
+function drawOrangeParticles() {
+  orangeFragments.forEach(fragment => {
+    ctx.fillStyle = 'orange';
+    ctx.beginPath();
+    ctx.arc(fragment.x, fragment.y, 2, 0, Math.PI * 2);
+    ctx.fill();
+  });
+}
+
+// Отримання координат із події (для touch)
+function getCoordinates(e) {
+  return e.touches
+    ? { offsetX: e.touches[0].clientX - canvas.offsetLeft, offsetY: e.touches[0].clientY - canvas.offsetTop }
+    : { offsetX: e.offsetX, offsetY: e.offsetY };
+}
+
+// Перевірка, чи близька точка до синьої лінії
+function isPointNearLine(px, py, line) {
+  for (let i = 0; i < line.length - 1; i++) {
+    const segment = { x1: line[i].x, y1: line[i].y, x2: line[i + 1].x, y2: line[i + 1].y };
+    const dist = pointToSegmentDistance(px, py, segment);
+    if (dist < 5) return true;
+  }
+  return false;
+}
+
+// Функція розрахунку відстані до лінійного сегмента
+function pointToSegmentDistance(px, py, segment) {
+  const { x1, y1, x2, y2 } = segment;
+  const dx = x2 - x1;
+  const dy = y2 - y1;
+  const lengthSquared = dx * dx + dy * dy;
+  let t = ((px - x1) * dx + (py - y1) * dy) / lengthSquared;
+  t = Math.max(0, Math.min(1, t));
+  const closestX = x1 + t * dx;
+  const closestY = y1 + t * dy;
+  return Math.hypot(px - closestX, py - closestY);
+}
+</script>
+
+</body>
+</html>
