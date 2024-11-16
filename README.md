@@ -1,13 +1,10 @@
 ## Зміст | Content
 
-# 1. [Ukrainian]( )
-
-
-   
-# 2. [Інструкція | Manual](#основні-поняття)
+ 
+# 1. [Інструкція | Manual](#основні-поняття)
 
   
-# 3. ЛІЦЕНЗІЙНИЙ ДОГОВІР | LICENSE AGREEMENT
+# 2. ЛІЦЕНЗІЙНИЙ ДОГОВІР | LICENSE AGREEMENT
 - [Ukrainian](#ЛІЦЕНЗІЙНИЙ-ДОГОВІР)
 - [English](#LICENSE-AGREEMENT)
 
