@@ -3,8 +3,8 @@
 1. [Cкачати гру| Download Game](#Download)
 2. [Інструкція | Manual](#основні-поняття)
 3. # ЛІЦЕНЗІЙНИЙ ДОГОВІР | LICENSE AGREEMENT
-- [ЛІЦЕНЗІЙНИЙ ДОГОВІР](#ЛІЦЕНЗІЙНИЙ-ДОГОВІР)
-- [ЛІЦЕНЗІЙНИЙ ДОГОВІР](#ЛІЦЕНЗІЙНИЙ)
+- [Ukrainian](#ЛІЦЕНЗІЙНИЙ-ДОГОВІР)
+- [English](#LICENSE-AGREEMENT)
 
 ## Download link
 [Here](https://www.google.com)
