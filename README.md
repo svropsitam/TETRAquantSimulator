@@ -1,6 +1,7 @@
 ## Зміст | Content
 
-# 1. [Скачати HTML файл](https://github.com/svropsitam/TETRAquantSimulator/raw/main/TETRAquantSimulatorBetaEditionL.html)
+# 1. <a href="https://github.com/svropsitam/TETRAquantSimulator/raw/main/TETRAquantSimulatorBetaEditionL.html" download>Скачати HTML файл</a>
+
    
 # 2. [Інструкція | Manual](#основні-поняття)
 
