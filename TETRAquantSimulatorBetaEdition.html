@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canvas Drawing with Wave Simulation</title>
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #canvas {
+    border: 1px solid black;
+    cursor: crosshair;
+    touch-action: none;
+  }
+  .buttons, .controls {
+    margin-top: 10px;
+  }
+  .buttons button, .controls input {
+    margin-right: 10px;
+    padding: 10px;
+  }
+</style>
+</head>
+<body>
+
+<canvas id="canvas" width="600" height="400"></canvas>
+
+<div class="buttons">
+  <button id="redButton" style="background-color: red;">Червона</button>
+  <button id="greenButton" style="background-color: green;">Зелена</button>
+  <button id="blueButton" style="background-color: blue;">Синя</button>
+  <button id="orangeButton" style="background-color: orange;">Помаранчева</button>
+  <button id="goButton">Запуск хвилі</button>
+  <button id="undoButton">Відмінити</button>
+  <button id="clearButton">Очистити</button>
+</div>
+
+<div class="controls">
+  <label>Кількість частинок:</label>
+  <input type="number" id="particleCount" min="1" max="360" value="360">
+  <label>Швидкість:</label>
+  <input type="text" id="particleSpeed" value="2">
+</div>
+
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+let drawingColor = 'red';
+let isDrawing = false;
+let points = [];
+let lines = [];
+let waveParticles = [];
+let particleCount = 360;
+let particleSpeed = 2;
+let orangeFragments = [];
+
+// Змінити колір малювання
+function setColor(color) {
+  drawingColor = color;
+}
+
+// Події для початку і завершення малювання
+canvas.addEventListener('mousedown', startDrawing);
+canvas.addEventListener('mousemove', draw);
+canvas.addEventListener('mouseup', stopDrawing);
+canvas.addEventListener('mouseleave', stopDrawing);
+canvas.addEventListener('touchstart', startDrawing);
+canvas.addEventListener('touchmove', draw);
+canvas.addEventListener('touchend', stopDrawing);
+
+// Кнопки для зміни кольору
+document.getElementById('redButton').addEventListener('click', () => setColor('red'));
+document.getElementById('greenButton').addEventListener('click', () => setColor('green'));
+document.getElementById('blueButton').addEventListener('click', () => setColor('blue'));
+document.getElementById('orangeButton').addEventListener('click', () => setColor('orange'));
+document.getElementById('goButton').addEventListener('click', startWave);
+document.getElementById('undoButton').addEventListener('click', undoLastLine);
+document.getElementById('clearButton').addEventListener('click', clearCanvas);
+
+// Оновлення налаштувань кількості частинок та швидкості
+document.getElementById('particleCount').addEventListener('input', e => particleCount = parseInt(e.target.value));
+document.getElementById('particleSpeed').addEventListener('input', e => {
+  const speed = parseFloat(e.target.value);
+  if (!isNaN(speed)) {
+    particleSpeed = speed;
+  }
+});
+
+// Початок малювання
+function startDrawing(e) {
+  isDrawing = true;
+  const { offsetX, offsetY } = getCoordinates(e);
+  points = [{ x: offsetX, y: offsetY, color: drawingColor }];
+}
+
+// Малювання
+function draw(e) {
+  if (!isDrawing) return;
+  const { offsetX, offsetY } = getCoordinates(e);
+  points.push({ x: offsetX, y: offsetY, color: drawingColor });
+  redrawCanvas();
+}
+
+// Завершення малювання
+function stopDrawing() {
+  if (isDrawing) {
+    isDrawing = false;
+    if (points.length > 0) {
+      if (drawingColor === 'orange') {
+        points.forEach(point => orangeFragments.push({
+          x: point.x,
+          y: point.y,
+          vx: 0,
+          vy: 0
+        }));
+      } else {
+        lines.push([...points]);
+      }
+      points = [];
+      redrawCanvas();
+    }
+  }
+}
+
+// Функція для відміни останньої лінії
+function undoLastLine() {
+  if (lines.length > 0) {
+    lines.pop();
+    redrawCanvas();
+  }
+}
+
+// Очищення полотна
+function clearCanvas() {
+  lines = [];
+  waveParticles = [];
+  orangeFragments = [];
+  redrawCanvas();
+}
+
+// Перемалювання
+function redrawCanvas() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  lines.forEach(line => drawLine(line));
+  if (points.length > 0) drawLine(points);
+  drawOrangeParticles();
+}
+
+// Малювання лінії
+function drawLine(line) {
+  if (line.length < 2) return;
+  ctx.beginPath();
+  ctx.lineWidth = 2;
+  ctx.strokeStyle = line[0].color;
+  ctx.moveTo(line[0].x, line[0].y);
+  for (let i = 1; i < line.length; i++) {
+    ctx.lineTo(line[i].x, line[i].y);
+  }
+  ctx.stroke();
+}
+
+// Запуск хвилі
+function startWave() {
+  waveParticles = [];
+  lines.forEach(line => {
+    if (line[0].color === 'red') {
+      line.forEach(point => {
+        for (let i = 0; i < particleCount; i++) {
+          const angle = (i * 360 / particleCount) * (Math.PI / 180);
+          waveParticles.push({
+            x: point.x,
+            y: point.y,
+            angle: angle,
+            opacity: 1
+          });
+        }
+      });
+    }
+  });
+  requestAnimationFrame(updateWave);
+}
+
+// Оновлення радіохвилі
+function updateWave() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  redrawCanvas();
+  ctx.globalAlpha = 1;
+
+  waveParticles.forEach((particle, index) => {
+    if (particle.opacity <= 0) {
+      waveParticles.splice(index, 1);
+      return;
+    }
+
+    ctx.globalAlpha = particle.opacity;
+    ctx.fillStyle = 'red';
+    ctx.beginPath();
+    ctx.arc(particle.x, particle.y, 2, 0, Math.PI * 2);
+    ctx.fill();
+
+    let newX = particle.x + Math.cos(particle.angle) * particleSpeed;
+    let newY = particle.y + Math.sin(particle.angle) * particleSpeed;
+
+    if (newX <= 0 || newX >= canvas.width) {
+      particle.angle = Math.PI - particle.angle;
+      particle.opacity -= 0.1;
+    }
+    if (newY <= 0 || newY >= canvas.height) {
+      particle.angle = -particle.angle;
+      particle.opacity -= 0.1;
+    }
+
+    // Взаємодія з помаранчевими частинками
+    orangeFragments.forEach(fragment => {
+      const dx = fragment.x - particle.x;
+      const dy = fragment.y - particle.y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+      if (distance < 5) {
+        const impulse = particle.opacity * 0.2;
+        fragment.vx += Math.cos(particle.angle) * impulse;
+        fragment.vy += Math.sin(particle.angle) * impulse;
+        particle.opacity -= 0.1;
+      }
+    });
+
+    // Відбиття від синіх ліній
+    lines.forEach(line => {
+      if (line[0].color === 'blue' && isPointNearLine(newX, newY, line)) {
+        particle.angle = Math.atan2(particle.y - newY, particle.x - newX);
+        particle.opacity -= 0.1;
+      }
+    });
+
+    particle.x = newX;
+    particle.y = newY;
+  });
+
+  ctx.globalAlpha = 1;
+  updateOrangeFragments();
+  if (waveParticles.length > 0) {
+    requestAnimationFrame(updateWave);
+  }
+}
+
+// Оновлення руху помаранчевих частинок
+function updateOrangeFragments() {
+  orangeFragments.forEach(fragment => {
+    fragment.x += fragment.vx;
+    fragment.y += fragment.vy;
+    fragment.vx *= 0.95;
+    fragment.vy *= 0.95;
+    
+    lines.forEach(line => {
+      if (line[0].color === 'blue' && isPointNearLine(fragment.x, fragment.y, line)) {
+        const angle = Math.atan2(fragment.vy, fragment.vx);
+        fragment.vx = -fragment.vx * 0.7;
+        fragment.vy = -fragment.vy * 0.7;
+      }
+    });
+
+    if (fragment.x <= 0 || fragment.x >= canvas.width) fragment.vx *= -1;
+    if (fragment.y <= 0 || fragment.y >= canvas.height) fragment.vy *= -1;
+  });
+}
+
+// Малювання помаранчевих частинок
+function drawOrangeParticles() {
+  orangeFragments.forEach(fragment => {
+    ctx.fillStyle = 'orange';
+    ctx.beginPath();
+    ctx.arc(fragment.x, fragment.y, 2, 0, Math.PI * 2);
+    ctx.fill();
+  });
+}
+
+// Отримання координат із події (для touch)
+function getCoordinates(e) {
+  return e.touches
+    ? { offsetX: e.touches[0].clientX - canvas.offsetLeft, offsetY: e.touches[0].clientY - canvas.offsetTop }
+    : { offsetX: e.offsetX, offsetY: e.offsetY };
+}
+
+// Перевірка, чи близька точка до синьої лінії
+function isPointNearLine(px, py, line) {
+  for (let i = 0; i < line.length - 1; i++) {
+    const segment = { x1: line[i].x, y1: line[i].y, x2: line[i + 1].x, y2: line[i + 1].y };
+    const dist = pointToSegmentDistance(px, py, segment);
+    if (dist < 5) return true;
+  }
+  return false;
+}
+
+// Функція розрахунку відстані до лінійного сегмента
+function pointToSegmentDistance(px, py, segment) {
+  const { x1, y1, x2, y2 } = segment;
+  const dx = x2 - x1;
+  const dy = y2 - y1;
+  const lengthSquared = dx * dx + dy * dy;
+  let t = ((px - x1) * dx + (py - y1) * dy) / lengthSquared;
+  t = Math.max(0, Math.min(1, t));
+  const closestX = x1 + t * dx;
+  const closestY = y1 + t * dy;
+  return Math.hypot(px - closestX, py - closestY);
+}
+</script>
+
+</body>
+</html>
