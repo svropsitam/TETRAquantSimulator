@@ -1,6 +1,6 @@
 ## Зміст | Content
 
-# 1. [Cкачати гру| Download Game](https://github.com/svropsitam/TETRAquantSimulator/blob/main/TETRAquantSimulatorBetaEditionL.html)
+# 1. [Скачати HTML файл](https://github.com/svropsitam/TETRAquantSimulator/raw/main/TETRAquantSimulatorBetaEditionL.html)
    
 # 2. [Інструкція | Manual](#основні-поняття)
 
