@@ -1,7 +1,7 @@
 ## Зміст | Content
 
  
-# 1. [Інструкція | Manual](#основні-поняття)
+# 1. Інструкція | Manual
 - [Ukrainian](#Посібник-користувача)
 - [English](#Manual)
   
@@ -144,6 +144,7 @@
 ## for the "Tetra Quant Simulator" Program
 
 This program allows users to draw on a canvas with wave effects and interaction with particles. Below is a detailed guide for using and configuring the program’s features.
+Markdown on buttons made on Ukrainian but you can easily autotranslate it with inbuilt browser translator.
 
 ## Features Description
 
