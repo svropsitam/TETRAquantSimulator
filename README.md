@@ -1,9 +1,10 @@
 ## Зміст | Content
 
-# 1. [Cкачати гру| Download Game](#Download-link)
-
+# 1. Cкачати гру| Download Game 
+- [Here](https://www.google.com)
    
 # 2. [Інструкція | Manual](#основні-поняття)
+
   
 # 3. ЛІЦЕНЗІЙНИЙ ДОГОВІР | LICENSE AGREEMENT
 - [Ukrainian](#ЛІЦЕНЗІЙНИЙ-ДОГОВІР)
@@ -14,9 +15,6 @@
 ---
 ---
 ---
-
-## Download link
-[Here](https://www.google.com)
 
 
 
