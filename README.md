@@ -3,7 +3,7 @@
  
 # 1. [Інструкція | Manual](#основні-поняття)
 - [Ukrainian](#Посібник-користувача)
-- [English](#LICENSE-AGREEMENT)
+- [English](#Manual)
   
 # 2. ЛІЦЕНЗІЙНИЙ ДОГОВІР | LICENSE AGREEMENT
 - [Ukrainian](#ЛІЦЕНЗІЙНИЙ-ДОГОВІР)
@@ -43,7 +43,7 @@
 Кнопка **Очистити** видаляє всі лінії та частинки з полотна.
 
 ### Налаштування параметрів частинок
-- **Кількість частинок**: Можна змінювати кількість частинок хвилі, вказуючи значення від 1 до 360.
+- **Кількість частинок**: Можна змінювати кількість частинок хвилі, вказуючи числові значення.
 - **Швидкість частинок**: Користувач може налаштувати швидкість руху частинок.
 
 ## Опис роботи з програмою
@@ -87,6 +87,8 @@
 
 Ця програма дозволяє створювати інтерфейс із художнім ефектом хвильових взаємодій, надаючи користувачам можливість візуалізувати цікаві фізичні ефекти на полотні.
 
+---
+---
 
 ## ЛІЦЕНЗІЙНИЙ ДОГОВІР
 Цей ліцензійний договір (далі — "Договір") є юридично обов’язковою угодою між Вами (далі — "Користувач") та Богданом-Любомиром Тетяничем-Бубликом (далі — "Ліцензіар") щодо використання програмного забезпечення (TETRAquantSimulator) (далі — "Програмне забезпечення").
@@ -137,6 +139,82 @@
 ---
 ---
 ---
+
+# Manual 
+## for the "Tetra Quant Simulator" Program
+
+This program allows users to draw on a canvas with wave effects and interaction with particles. Below is a detailed guide for using and configuring the program’s features.
+
+## Features Description
+
+### Drawing Canvas (Canvas)
+The program provides a canvas sized 600x400 pixels, where users can draw using a mouse or touchscreen. The selected color determines the appearance of the lines drawn by the user.
+
+### Color Selection Buttons
+There are several buttons for selecting the drawing color:
+
+- **Red**: Draws red lines.
+- **Green**: Draws green lines.
+- **Blue**: Draws blue lines.
+- **Orange**: Draws orange lines that trigger a special effect.
+
+### Wave Trigger (Wave)
+The **Start Wave** button triggers the wave simulation, which is generated around the red lines.
+
+### Undo Last Line (Undo)
+The **Undo** button allows users to cancel the last drawn line.
+
+### Clear Canvas
+The **Clear** button removes all lines and particles from the canvas.
+
+### Particle Settings
+- **Particle Count**: You can adjust the number of wave particles, specifying a value from 1 to 360.
+- **Particle Speed**: The user can set the speed of particle movement.
+
+## How to Use the Program
+
+### Drawing
+Click on the canvas while holding the mouse button or using the touchscreen to begin drawing. The line color will change according to the selected color button.
+
+### Starting the Wave
+Once you’ve drawn several red lines, click the **Start Wave** button to activate the wave effect, which spreads from the red lines. Wave particles will move in different directions.
+
+### Particle Interaction
+Orange particles, created when drawing orange lines, interact with wave particles. They may collide and bounce off the wave particles, creating additional effects.
+
+### Undo and Clear
+To undo the last line, press the **Undo** button. To clear the entire canvas, press the **Clear** button.
+
+## Technical Details
+- The program uses **HTML5 Canvas** for drawing.
+- Particle interaction with lines and other particles is implemented through basic physical calculations (reflection, interaction with other particles).
+- **JavaScript** is used for handling mouse and touchscreen events and for simulating waves.
+
+## How to Run the Program
+1. Download the HTML file to your computer.
+2. Open the file in any modern browser (e.g., Google Chrome or Firefox).
+3. Start drawing on the canvas using the interface.
+
+## Controls
+
+- **Red Color**: Click the **Red** button to draw in red.
+- **Green Color**: Click the **Green** button to draw in green.
+- **Blue Color**: Click the **Blue** button to draw in blue.
+- **Orange Color**: Click the **Orange** button to draw in orange.
+- **Start Wave**: Click the **Start Wave** button to trigger the wave effect.
+- **Undo**: Click the **Undo** button to undo the last drawing.
+- **Clear**: Click the **Clear** button to clear the canvas.
+
+## Settings
+
+- **Particle Count**: You can adjust the number of wave particles using the corresponding field.
+- **Particle Speed**: Change the speed of the particles through the text box.
+
+This program enables the creation of an artistic interface with wave interaction effects, allowing users to visualize interesting physical phenomena on the canvas.
+
+---
+---
+
 ## LICENSE AGREEMENT
 This License Agreement (hereinafter referred to as the "Agreement") is a legally binding agreement between you (hereinafter referred to as the "User") and Tetianych-Bublyk Bohdan-Liubomyr (hereinafter referred to as the "Licensor") regarding the use of the software(TETRAquantSimulator) (hereinafter referred to as the "Software").
 
