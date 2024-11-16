@@ -2,7 +2,9 @@
 
 1. [Cкачати гру| Download Game](#Download)
 2. [Інструкція | Manual](#основні-поняття)
-3. [ЛІЦЕНЗІЙНИЙ ДОГОВІР | LICENSE AGREEMENT](#приклад-коду)
+3. ## ЛІЦЕНЗІЙНИЙ ДОГОВІР | LICENSE AGREEMENT
+- [ЛІЦЕНЗІЙНИЙ ДОГОВІР](#LICENSE)
+- [ЛІЦЕНЗІЙНИЙ ДОГОВІР](#ЛІЦЕНЗІЙНИЙ)
 
 ## Download link
 [Here](https://www.google.com)
